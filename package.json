@@ -1,0 +1,52 @@
+{
+  "name": "theatreapi",
+  "version": "1.0.0",
+  "description": "API for a Movie Theatre",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node -r dotenv/config src/index.js",
+    "devc": "nodemon -r dotenv/config src/index.js",
+    "lint": "npx eslint src",
+    "format": "npx eslint src --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyansh32/theatreAPI.git"
+  },
+  "keywords": [
+    "nodejs",
+    "API",
+    "express",
+    "mongoDB"
+  ],
+  "author": "Priyansh Patidar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/priyansh32/theatreAPI/issues"
+  },
+  "homepage": "https://github.com/priyansh32/theatreAPI#readme",
+  "dependencies": {
+    "cloudinary": "^1.27.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-validator": "^6.12.2",
+    "helmet": "^4.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.9",
+    "multer": "^1.4.3",
+    "multer-storage-cloudinary": "^4.0.0",
+    "passport": "^0.5.0",
+    "passport-google-token": "^0.1.2",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.24.2"
+  }
+}
