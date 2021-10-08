@@ -10,13 +10,13 @@ module.exports.getMovies = async (req, res) => {
   });
 
   if (!movies || movies.length === 0) {
-    res.json({
+    return res.json({
       success: false,
       message: 'No movies found',
     });
   }
 
-  res.json({
+  return res.json({
     success: true,
     message: 'Movies fetched successfully',
     movies,
@@ -26,12 +26,12 @@ module.exports.getMovies = async (req, res) => {
 module.exports.getMovie = async (req, res) => {
   const movie = await Movie.findById(req.params.id);
   if (!movie) {
-    res.json({
+    return res.json({
       success: false,
       message: 'Movie not found',
     });
   }
-  res.json({
+  return res.json({
     success: true,
     message: 'Movie fetched successfully',
     movie,
@@ -62,7 +62,7 @@ module.exports.addMovie = async (req, res) => {
   });
 
   await movie.save();
-  res.json({
+  return res.json({
     success: true,
     message: 'Movie added successfully',
     movie,
@@ -73,7 +73,7 @@ module.exports.updateMovie = async (req, res) => {
   const movie = await Movie.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  res.json(movie);
+  return res.json(movie);
 };
 
 module.exports.bookMovie = async (req, res) => {
