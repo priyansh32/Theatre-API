@@ -6,6 +6,8 @@ const isAdmin = require('../middlewares/isAdmin');
 const {
   getMovies,
   addMovie,
+  getMovie,
+  updateMovie,
 } = require('../controllers/movies');
 
 router
@@ -15,6 +17,15 @@ router
     checkAuth,
     isAdmin,
     catchAsync(addMovie),
+  );
+
+router
+  .route('/:id')
+  .get(catchAsync(getMovie))
+  .put(
+    checkAuth,
+    isAdmin,
+    catchAsync(updateMovie),
   );
 
 module.exports = router;

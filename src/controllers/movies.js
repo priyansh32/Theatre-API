@@ -1,7 +1,21 @@
 const Movie = require('../models/movie');
 
 module.exports.getMovies = async (req, res) => {
-  const movies = await Movie.find(req.query);
+  const movies = await Movie.find(req.query, {
+    _id: 1,
+    title: 1,
+    year: 1,
+    runtime: 1,
+    genre: 1,
+  });
+
+  if (!movies || movies.length === 0) {
+    res.json({
+      success: false,
+      message: 'No movies found',
+    });
+  }
+
   res.json({
     success: true,
     message: 'Movies fetched successfully',
@@ -11,6 +25,12 @@ module.exports.getMovies = async (req, res) => {
 
 module.exports.getMovie = async (req, res) => {
   const movie = await Movie.findById(req.params.id);
+  if (!movie) {
+    res.json({
+      success: false,
+      message: 'Movie not found',
+    });
+  }
   res.json({
     success: true,
     message: 'Movie fetched successfully',
